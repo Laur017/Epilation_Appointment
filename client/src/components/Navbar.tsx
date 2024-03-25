@@ -8,17 +8,15 @@ export default function Navbar() {
     }
   return (
     <nav>
-        <h1>Name</h1>
+        <h1  onClick={() => goTo('/')}>ElectroGlow</h1>
 
         <div>
-            <button onClick={() => goTo('/')}>Home</button>
-            <button>About</button>
-            <button>FAQ</button>
-            <button>Location</button>
-            <button onClick={() => goTo('/book')}>Book</button>
+            <button onClick={() => goTo('/book')}>Programare</button>
+            <button>Despre noi</button>
+            <button>Contact</button>
         </div>
 
-        <h1>Login</h1>
+        <h3>Login</h3>
     </nav>
   )
 }
