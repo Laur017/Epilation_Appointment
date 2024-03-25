@@ -90,3 +90,61 @@ box-shadow:  20px 20px 60px #d9d9d9,
 
     font-weight: 400;
 }
+
+.block-div{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2323236c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-validare-date{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    padding: 0.5rem 2rem;
+    border-radius: 1rem;
+
+    h2{
+        font-weight: 400;
+
+        span{
+            font-weight: 600;
+            /* color: #4D6443; */
+        }
+    }
+
+    div{
+        display: flex;
+        gap: 5rem;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 1rem;
+
+        button{
+            all: unset;
+            border: 2px solid #232323;
+            padding: 0.5rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.5s ease;
+        }
+
+        button:nth-child(1):hover{
+            background-color: #232323;
+            color: white;
+        }
+
+        button:nth-child(2){
+            border: 2px solid #4D6443;
+        }
+    }
+}

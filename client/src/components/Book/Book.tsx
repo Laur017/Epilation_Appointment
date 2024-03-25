@@ -3,9 +3,14 @@ import './Book.css'
 import Arm from '../../assets/elbow.png'
 import Armpit from '../../assets/armpit.png'
 import Leg from '../../assets/leg.png'
+import CheckData from './CheckData'
 
 export default function Book() {
     const [typeBook, setTypeBook] = useState<number>(1);
+    const [nume, setNume] = useState<string>('')
+    const [numar, setNumar] = useState<string>('')
+    const [ora, setOra] = useState<string>("09")
+    const [verificareDate, setVerificareDate] = useState<boolean>(false)
 
     const changeTypeOfBook = (n:number):void =>{
         setTypeBook(n)
@@ -14,13 +19,27 @@ export default function Book() {
     useEffect(() => {
         console.log(typeBook)
     },[typeBook])
-
+    
     const azi = new Date()
     azi.setDate(azi.getDate() + 1)
     const day = azi.getDate()
     const month = azi.getMonth() + 1
     const year = azi.getFullYear()
     const aziString = `${year}-${month < 10 ? '0' + month : month}-${day < 10 ? '0' + day : day}`
+    const [data, setData] = useState(aziString)
+
+    const handleRezervare = () => {
+        console.log(nume, numar, typeBook, data, ora)
+        if(nume.length > 2 && numar.length > 7){
+            setVerificareDate(true)
+        }else{
+            alert('Datele introduse sunt incomplete')
+        }
+    }
+
+    const handleAnulare = () => {
+        setVerificareDate(false)
+    }
 
   return (
     <div className="book-div">
@@ -29,11 +48,11 @@ export default function Book() {
 
         <label>
             Nume și Prenume *
-            <input type="text" placeholder="eg. John Smith" required/>
+            <input type="text" placeholder="eg. John Smith" value={nume} onChange={(e) => setNume(e.target.value)} required/>
         </label>
         <label>
             Număr de telefon *
-            <input type="text" placeholder="eg. 069123456" required/>
+            <input type="text" placeholder="eg. 069123456"  value={numar} onChange={(e) => setNumar(e.target.value)} required/>
         </label>
         <label>Tipul procedurii *</label>
         <div className="type-book">
@@ -44,11 +63,11 @@ export default function Book() {
 
         <label>
             Data *
-            <input type="date" min={aziString} value={aziString}/>
+            <input type="date" min={aziString} value={data} onChange={(e) => setData(e.target.value)}/>
         </label>
         <label>
             Ora *
-            <select className='select-time'>
+            <select className='select-time' onChange={(e) => setOra(e.target.value)}>
                 <option value={"09"}>09:00</option>
                 <option value={"10"}>10:00</option>
                 <option value={"11"}>11:00</option>
@@ -62,7 +81,12 @@ export default function Book() {
         </label>
 
         </div>
-        <button className='book-btn'>Rezervă</button>
+        <button className='book-btn' onClick={handleRezervare}>Rezervă</button>
+        {verificareDate &&
+        <div className='block-div'>
+            <CheckData nume={nume} numar={numar} procedura={typeBook} data={data} ora={ora} handleAnulare={handleAnulare}/>
+        </div>
+        }
     </div>
   )
 }
