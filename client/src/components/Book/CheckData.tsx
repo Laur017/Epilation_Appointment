@@ -1,5 +1,6 @@
 import { doc, updateDoc } from 'firebase/firestore'
 import { db } from '../../firebase'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
     nume:string,
@@ -12,7 +13,8 @@ interface Props {
 
 export default function CheckData({nume, numar, procedura, data, ora, handleAnulare}:Props) {
     const dataCorecta = data.split("-").reverse().join("-")
-    
+    const navigate = useNavigate()
+
     const handleConfirmare = async () => {
 
         try{
@@ -27,7 +29,7 @@ export default function CheckData({nume, numar, procedura, data, ora, handleAnul
                 ora:ora
             }
             });
-            console.log("Document added to the db")
+            navigate('/thanks')
           } catch (e) {
             console.log("Error adding document: ", e)
           }
