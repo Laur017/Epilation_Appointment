@@ -25,7 +25,7 @@ export default function Navbar() {
             <button>Contact</button>
         </div>
 
-        <h3>Login</h3>
+        <h3 onClick={() => goTo('/login')}>Login</h3>
     </nav>
   )
 }

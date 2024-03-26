@@ -1,0 +1,50 @@
+.login-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 2rem;
+    margin-top: 10%;
+    gap: 1rem;
+    width: 40%;
+    border-radius: 1rem;
+    background: #ffffff;
+    box-shadow:  20px 20px 60px #d9d9d9,
+             -20px -20px 60px #ffffff;
+    color: #232323;
+}
+
+label{
+    display: flex;
+    flex-direction: column;
+    letter-spacing: 1px;
+    gap: 0.5rem;
+    font-weight: 600;
+}
+
+input{
+    all: unset;
+    border-bottom: 1px solid #232323;
+    padding-left: 0.5rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+}
+
+button{
+    all: unset;
+    font-family: "Onest", sans-serif;
+    cursor: pointer;
+    border:2px solid #4D6443;
+    color: #4D6443;
+    letter-spacing: 1px;
+    padding: 0.5rem 2rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.5s ease;
+}
+
+
+button:hover{
+    background-color: #4D6443;
+    color: white;
+}
