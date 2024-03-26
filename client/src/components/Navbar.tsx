@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation} from "react-router-dom"
+import User_l from '../assets/user-l.png'
+import User_d from '../assets/user-d.png'
 
 export default function Navbar() {
     const navigate = useNavigate()
@@ -25,7 +27,7 @@ export default function Navbar() {
             <button>Contact</button>
         </div>
 
-        <h3 onClick={() => goTo('/login')}>Login</h3>
+        <h3 onClick={() => goTo('/login')}><img src={landingHere ? User_l : User_d} /></h3>
     </nav>
   )
 }

@@ -39,9 +39,21 @@ nav {
       all: unset;
     }
 
+    button{
+      transition: all 0.3s ease;
+    }
+
     button:hover {
       cursor: pointer;
+      border-bottom: 1px solid white;
+      transition: all 0.3s ease;
+
     }
+  }
+
+  h3 > img {
+    width: 1.5rem;
+    cursor: pointer;
   }
 }
 

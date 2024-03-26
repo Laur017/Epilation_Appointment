@@ -11,6 +11,25 @@
     box-shadow:  20px 20px 60px #d9d9d9,
              -20px -20px 60px #ffffff;
     color: #232323;
+
+    button{
+        all: unset;
+        font-family: "Onest", sans-serif;
+        cursor: pointer;
+        border:2px solid #4D6443;
+        color: #4D6443;
+        letter-spacing: 1px;
+        padding: 0.5rem 2rem;
+        border-radius: 5px;
+        font-size: 1rem;
+        font-weight: 600;
+        transition: all 0.5s ease;
+    }
+
+    button:hover{
+        background-color: #4D6443;
+        color: white;
+    }
 }
 
 label{
@@ -29,22 +48,6 @@ input{
     font-weight: 400;
 }
 
-button{
-    all: unset;
-    font-family: "Onest", sans-serif;
-    cursor: pointer;
-    border:2px solid #4D6443;
-    color: #4D6443;
-    letter-spacing: 1px;
-    padding: 0.5rem 2rem;
-    border-radius: 5px;
-    font-size: 1rem;
-    font-weight: 600;
-    transition: all 0.5s ease;
-}
 
 
-button:hover{
-    background-color: #4D6443;
-    color: white;
-}
+
