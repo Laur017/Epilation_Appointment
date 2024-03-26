@@ -6,6 +6,7 @@
     left: 0;
     background-color: white; 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -13,6 +14,10 @@
 .dash-selection{
     display: flex;
     gap: 2rem;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 10%;
     
     button{
         all: unset;
@@ -24,4 +29,48 @@
 .selected-btn{
     border-bottom: 2px solid #232323 !important;
     font-weight: 600 !important;
+}
+
+.cereri-div, .programari-div{
+    margin-top: 5%;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cereri-div{
+    gap: 1rem;
+    align-items: center;
+    div{
+        display: flex;
+        width: 80%;
+        justify-content: space-evenly;
+        border-radius: 1rem;
+        background: #ffffff;
+        box-shadow: 10px 10px 10px #d9d9d9,
+                -10px -10px 10px #ffffff;
+    
+        h5:nth-child(1){
+            width: 40%;
+        }
+        span{
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            img{
+                width: 2rem;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+
+.empty-div{
+ flex-direction: column;
+ align-items: center;
+ img{
+    width: 10rem;
+ }       
 }

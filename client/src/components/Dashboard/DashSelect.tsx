@@ -1,9 +1,14 @@
 import { useState } from "react"
 
-export default function DashSelect() {
+interface Props {
+  handlePage: (n:number) => void
+}
+
+export default function DashSelect({handlePage}:Props) {
   const [selected, setSelected] = useState<number>(1)
   const handleSelection = (n:number) => {
     setSelected(n)
+    handlePage(n)
   }
   return (
     <div className="dash-selection">
