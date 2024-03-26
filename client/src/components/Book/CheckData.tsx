@@ -1,14 +1,42 @@
+import { doc, updateDoc } from 'firebase/firestore'
+import { db } from '../../firebase'
+
 interface Props {
     nume:string,
     numar:string,
     procedura:number,
     data:string,
     ora:string,
-    handleAnulare:any
+    handleAnulare:() => void
 }
 
 export default function CheckData({nume, numar, procedura, data, ora, handleAnulare}:Props) {
     const dataCorecta = data.split("-").reverse().join("-")
+    
+    const handleConfirmare = async () => {
+
+        try{
+            const docRef = doc(db, "electro", "cereri")
+    
+            await updateDoc(docRef,{
+              [generateRandomKey()]:{
+                nume:nume,
+                numar:numar,
+                procedura: procedura === 1 ? "mâini" : procedura === 2 ? "subrațe" : "picioare",
+                data:dataCorecta,
+                ora:ora
+            }
+            });
+            console.log("Document added to the db")
+          } catch (e) {
+            console.log("Error adding document: ", e)
+          }
+    }
+    
+    function generateRandomKey() {
+        return Math.random().toString(36).substring(2, 10);
+    }
+
     return (
     <div className="div-validare-date">
         <h1>Verificarea datelor introduse</h1>
@@ -32,7 +60,7 @@ export default function CheckData({nume, numar, procedura, data, ora, handleAnul
 
         <div>
             <button onClick={handleAnulare}>Anulare</button>
-            <button className="book-btn">Confirmare</button>
+            <button className="book-btn" onClick={handleConfirmare}>Confirmare</button>
         </div>
     </div>
   )
