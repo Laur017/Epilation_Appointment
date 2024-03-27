@@ -16,6 +16,8 @@ export default function Cereri() {
     const [data, setData] = useState('')
     const [ora, setOra] = useState('')
     const [action, setAction] = useState(1)
+    const [chei, setChei] = useState<string[]>([])
+    const [ki, setKi] = useState('')
 
     const handleAnulare = () =>{
         setConfirmTable(false)
@@ -31,8 +33,10 @@ export default function Cereri() {
               if (docSnap.exists()) {
                 const data = docSnap.data();
                 console.log(data)
+                setChei(Object.keys(data))
                 const dataArray = Object.entries(data).map(([key, value]) => ({ key, ...value }))
                 setInfo(dataArray)
+                Object.keys(data).length === 0 && setExistsData(false)
               } else {
                 setExistsData(false)
               }
@@ -43,15 +47,16 @@ export default function Cereri() {
         };
         
         fetchData();
-      }, [])
+      }, [confirmTable])
 
-      const handleAction = (a:string,b:string,c:string,d:string,e:string,f:number) => {
+      const handleAction = (a:string,b:string,c:string,d:string,e:string,f:number,k:string) => {
           setNume(a)
           setNumar(b)
           setProcedura(c)
           setData(d)
           setOra(e)
           setAction(f)
+          setKi(k)
           setConfirmTable(true)
         }
 
@@ -65,8 +70,8 @@ export default function Cereri() {
                 <h5>{i.procedura}</h5>
                 <h5>{i.data} - {i.ora}:00</h5>
                 <span>
-                    <img src={Accept} onClick={() => handleAction(i.nume, i.numar, i.procedura, i.data, i.ora,1)}/>
-                    <img src={Decline}  onClick={() => handleAction(i.nume, i.numar, i.procedura, i.data, i.ora,2)}/>
+                    <img src={Accept} onClick={() => handleAction(i.nume, i.numar, i.procedura, i.data, i.ora,1,chei[indx])}/>
+                    <img src={Decline}  onClick={() => handleAction(i.nume, i.numar, i.procedura, i.data, i.ora,2,chei[indx])}/>
                 </span>
             </div>) :
             <div className='empty-div'>
@@ -86,6 +91,7 @@ export default function Cereri() {
                     procedura={procedura}
                     actiune = {action}
                     handleAnulare={handleAnulare}
+                    ki={ki}
                 />
             </div>
         }

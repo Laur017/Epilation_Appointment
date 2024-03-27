@@ -1,3 +1,6 @@
+import { deleteField, doc, updateDoc } from 'firebase/firestore'
+import { db } from '../../firebase'
+
 interface Props {
     nume:string
     numar:string
@@ -6,11 +9,43 @@ interface Props {
     procedura:string
     actiune: number
     handleAnulare: () => void
+    ki:string
 }
 
-export default function CerereCard({nume, numar, data, ora, procedura, actiune, handleAnulare}:Props) {
-    const handleConfirmare = () => {
-        console.log('Tot zbs')
+export default function CerereCard({nume, numar, data, ora, procedura, actiune, handleAnulare,ki}:Props) {
+    const handleConfirmare = async () => {
+        console.log(ki)
+        if(actiune === 2){
+            try {
+                const docRef = doc(db, "electro", "cereri")
+                await updateDoc(docRef,{
+                    [ki]:deleteField()
+                })
+                console.log("mere")
+            } catch (error){
+                console.error('Error deleting field')
+            }
+        } else if (actiune === 1){
+            try{
+                const docRef = doc(db, "electro", "programari")
+        
+                await updateDoc(docRef,{
+                  [ki]:{
+                    nume:nume,
+                    numar:numar,
+                    procedura: procedura,
+                    data:data,
+                    ora:ora
+                }
+                });
+                actiune = 2
+                handleConfirmare()
+              } catch (e) {
+                console.log("Error adding document: ", e)
+              }
+        }
+
+        handleAnulare()
     }
   
     return (

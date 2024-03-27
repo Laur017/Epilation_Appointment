@@ -69,6 +69,8 @@
 .empty-div{
  flex-direction: column;
  align-items: center;
+ justify-content: center;
+ text-align: center;
  img{
     width: 10rem;
  }       
