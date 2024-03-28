@@ -124,3 +124,12 @@
 .red{
     color: red;
 }
+
+.programari-div{
+    align-items: center;
+}
+
+.calendar-div{
+    width: 80%;
+    height: 60%;
+}
