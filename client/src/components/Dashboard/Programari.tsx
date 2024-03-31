@@ -31,7 +31,7 @@ interface Event {
   start: Date;
   end: Date;
   title: string;
-}
+} 
 
 export default function Programari() {
   const [events, setEvents] = useState<Event[]>([])
